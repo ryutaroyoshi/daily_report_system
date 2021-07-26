@@ -57,7 +57,7 @@ public class Employee {
     /*
      * 氏名
      */
-    @Column(name = JpaConst.EMP_COL_CODE , nullable = false)
+    @Column(name = JpaConst.EMP_COL_NAME , nullable = false)
     private String name;
 
     /*
