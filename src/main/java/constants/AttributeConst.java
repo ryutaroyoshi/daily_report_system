@@ -26,7 +26,7 @@ public enum AttributeConst {
     //従業員管理
     EMPLOYEE("employee"),
     EMPLOYEES("employees"),
-    EMP_COUNT("employee_count"),
+    EMP_COUNT("employees_count"),
     EMP_ID("id"),
     EMP_CODE("code"),
     EMP_PASS("password"),
