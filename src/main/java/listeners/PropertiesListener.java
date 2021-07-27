@@ -17,20 +17,19 @@ public class PropertiesListener implements ServletContextListener {
     public PropertiesListener() {
     }
 
-
-    /*
+    /**
      * Webアプリケーションのシャットダウン時に実行する処理
      */
-    public void contextDestroyed(ServletContextEvent arg0)  {
+    public void contextDestroyed(ServletContextEvent arg0) {
     }
 
-    /*
+    /**
      * Webアプリケーションの起動時に実行する処理
      */
-    public void contextInitialized(ServletContextEvent arg0)  {
+    public void contextInitialized(ServletContextEvent arg0) {
         ServletContext context = arg0.getServletContext();
 
-        //プロパティファイルを読み込み、アプリケーションスコープに登録
+        //プロパティファイルを読み込み、アプリケーションスコープに設定する
         try {
             InputStream is = PropertiesListener.class.getClassLoader().getResourceAsStream("application.properties");
 
@@ -44,9 +43,9 @@ public class PropertiesListener implements ServletContextListener {
                 context.setAttribute(pname, properties.getProperty(pname));
 
             }
-        }catch(FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
-        }catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

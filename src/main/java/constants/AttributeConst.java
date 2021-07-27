@@ -18,6 +18,9 @@ public enum AttributeConst {
     ERR("errors"),
 
     //ログイン中の従業員
+    LOGIN_EMP("login_employee"),
+
+    //ログイン画面
     LOGIN_ERR("loginError"),
 
     //従業員管理
@@ -41,7 +44,7 @@ public enum AttributeConst {
     //日報管理
     REPORT("report"),
     REPORTS("reports"),
-    REP_COUNT("report_count"),
+    REP_COUNT("reports_count"),
     REP_ID("id"),
     REP_DATE("report_date"),
     REP_TITLE("title"),
