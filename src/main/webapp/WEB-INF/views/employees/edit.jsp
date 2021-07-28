@@ -19,14 +19,15 @@
         <p>
             <a href="#" onclick="confirmDestroy();">この従業員を削除する</a>
         </p>
-        <form method="POST" action="<c:url value='?action=${action}&command=${commDel}'/>">
+        <form method="POST"
+            action="<c:url value='?action=${action}&command=${commDel}'/>">
             <input type="hidden" name="${AttributeConst.EMP_ID.getValue()}" value="${employee.id}" />
             <input type="hidden" name="${AttributeConst.TOKEN.getValue()}" value="${_token}" />
         </form>
         <script>
         function confirmDestroy(){
             if(confirm("本当に削除してもよろしいですか？")){
-                document.form[1].submit();
+                document.forms[1].submit();
             }
         }
         </script>
