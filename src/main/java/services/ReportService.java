@@ -34,6 +34,19 @@ public class ReportService extends ServiceBase {
     }
 
     /*
+     * 指定した従業員が作成した日報データの件数を取得し、返却する
+     * @param employee
+     * @retrun 日報データの件数
+     */
+    public long countAllMine(EmployeeView employee) {
+
+        long count = (long) em.createNamedQuery(JpaConst.Q_REP_COUNT_ALL_MINE, Long.class)
+                .setParameter(JpaConst.JPQL_PARM_EMPLOYEE, EmployeeConverter.toModel(employee))
+                .getSingleResult();
+        return count;
+    }
+
+    /*
      * 指定したページ数の一覧画面に表示する日報データを取得し、ReportViewのリストで返却する
      * @param page ページ数
      * @return 一覧画面に表示するデータのリスt
