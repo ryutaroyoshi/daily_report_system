@@ -177,4 +177,45 @@ public class ReportAction extends ActionBase{
         }
     }
 
+    /*
+     * 更新を行う
+     * @throws ServletException
+     * @throws IOException
+     */
+    public void update() throws ServletException, IOException{
+
+        if (checkToken()) {
+
+           //idを条件に日報データを取得
+            ReportView rv = service.findOne(toNumber(getRequestParam(AttributeConst.REP_ID)));
+
+            //入力された日報内容を設定する
+            rv.setReportDate(toLocalDate(getRequestParam(AttributeConst.REP_DATE)));
+            rv.setTitle(getRequestParam(AttributeConst.REP_TITLE));
+            rv.setContent(getRequestParam(AttributeConst.REP_CONTENT));
+
+            //日報データを更新
+            List<String> errors = service.update(rv);
+
+            if(errors.size()> 0) {
+                //更新中にエラー
+
+                putRequestScope(AttributeConst.TOKEN, getTokenId());
+                putRequestScope(AttributeConst.REPORT, rv); //入力された日報情報
+                putRequestScope(AttributeConst.ERR, errors); //エラーのリスト
+
+                //編集画面を再表示
+                forward(ForwardConst.FW_REP_EDIT);
+
+            } else {
+                //更新中にエラーなし
+
+                //セッションに更新完了のフラッシュメッセージ
+                putSessionScope(AttributeConst.FLUSH, MessageConst.I_UPDATED.getMessage());
+
+                redirect(ForwardConst.ACT_REP,ForwardConst.CMD_INDEX);
+            }
+        }
+    }
+
 }
