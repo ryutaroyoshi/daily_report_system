@@ -82,7 +82,7 @@ public class AuthAction extends ActionBase{
             //CSRF
             putSessionScope(AttributeConst.TOKEN ,getTokenId());
             //認証失敗のエラーメッセージ
-            putSessionScope(AttributeConst.LOGIN_ERR, true);
+            putRequestScope(AttributeConst.LOGIN_ERR, true);
             //入力された従業員コードを設定
             putRequestScope(AttributeConst.EMP_CODE, code);
 
